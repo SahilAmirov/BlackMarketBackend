@@ -34,5 +34,7 @@ namespace Business.Constans
         public static string AddedUserOperationClaim = "User Operation Claim basariyla eklendi";
         public static string DeletedUserOperationClaim = "User Operation Claim basariyla silindi";
         public static string UpdatedUserOperationClaim = "User Operation Claim basariyla guncellendi";
+
+        public static string NewOrder = "Yeni siparis basarili";
     }
 }

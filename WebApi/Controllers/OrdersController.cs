@@ -7,19 +7,19 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StoreController : ControllerBase
+    public class OrdersController : ControllerBase
     {
-        private readonly IStoreService _storeService;
+        private readonly IOrderService _orderService;
 
-        public StoreController(IStoreService storeService)
+        public OrdersController(IOrderService orderService)
         {
-            _storeService = storeService;
+            _orderService = orderService;
         }
 
-        [HttpGet("getstorebyname")]
-        public IActionResult GetStoreByName(string storeName)
+        [HttpGet("getorderlist")]
+        public IActionResult GetOrderList()
         {
-            var result = _storeService.GetStoreByName(storeName);
+            var result = _orderService.GetList();
             if (result.Success)
             {
                 return Ok(result);
@@ -27,10 +27,10 @@ namespace WebApi.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPost("newstore")]
-        public IActionResult NewStore(string storeName)
+        [HttpPost("neworder")]
+        public IActionResult NewOrder(Order order)
         {
-            var result = _storeService.AddStore(storeName);
+            var result = _orderService.Add(order);
             if (result.Success)
             {
                 return Ok(result);
